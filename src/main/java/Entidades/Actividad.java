@@ -1,9 +1,6 @@
 package Entidades;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalTime;
 import java.util.Comparator;
@@ -11,6 +8,7 @@ import java.util.Comparator;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode (of = "codigo")
 
 public class Actividad implements Comparable<Actividad> {
