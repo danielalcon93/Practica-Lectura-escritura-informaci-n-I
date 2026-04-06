@@ -23,6 +23,14 @@ public class Gimnasio {
     private HashMap<String, Actividad> actividades = new HashMap<>();
     private TreeMap<Socio, HashSet<Reserva>> reservas = new TreeMap<>();
 
+    //Constructor
+    public Gimnasio(String nombre, String direccion, String telefono, String email) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+    }
+
     //Metodos
     public void addSocio(Socio s) {
         socios.put(s.getDni(), s);
