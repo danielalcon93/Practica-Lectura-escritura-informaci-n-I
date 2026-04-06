@@ -168,7 +168,7 @@ public class Gimnasio {
     }
 
 
-    public List<Reserva> getRerservasOrdenadasPorSocioYFecha() {
+    public List<Reserva> getReservasOrdenadasPorSocioYFecha() {
         List<Reserva> lista = new ArrayList<>();
 
         for(HashSet<Reserva> set : reservas.values()){
