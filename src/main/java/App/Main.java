@@ -13,11 +13,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Creamos el gimnasio
+        //1. Creamos el gimnasio
         Gimnasio gym = new Gimnasio("FitZone Murcia","Calle Mayor 123","968123456","info@fitzone.com");
 
 
-        //Creamos los socios y los añadimos
+        //2. Creamos los socios y los añadimos
         Socio s1 = new Socio("111A", "Juan", "Perez", "juan@mail.com", "600111111", LocalDate.now(), Cuota.BASICA);
         Socio s2 = new Socio("222B", "Maria", "Lopez", "maria@mail.com", "600222222", LocalDate.now(), Cuota.PREMIUM);
         Socio s3 = new Socio("333C", "Carlos", "Garcia", "carlos@mail.com", "600333333", LocalDate.now(), Cuota.FAMILIAR);
@@ -33,7 +33,7 @@ public class Main {
         gym.addSocio(s6);
 
 
-        //Creamos actividades
+        //3. Creamos actividades y las añadimos al gimnasio
         Actividad a1 = new Actividad("A1", "Yoga", "Relajación", DiaSemana.LUNES, LocalTime.of(9,0), 60, 3, "Laura");
         Actividad a2 = new Actividad("A2", "Spinning", "Cardio intenso", DiaSemana.MARTES, LocalTime.of(18,0), 60, 10, "Carlos");
         Actividad a3 = new Actividad("A3", "Pilates", "Trabajo de core", DiaSemana.MIERCOLES, LocalTime.of(10,0), 60, 2, "Ana");
@@ -51,5 +51,75 @@ public class Main {
         gym.addActividad(a6);
         gym.addActividad(a7);
         gym.addActividad(a8);
+
+
+        //5. Realizamos reservas, llenando pilates
+        gym.reservarActividad("111A", "A3");
+        gym.reservarActividad("222B", "A3");
+
+
+        //Intento fallido (aforo lleno)
+        gym.reservarActividad("333C", "A3");
+
+
+        //Más reservas
+        gym.reservarActividad("111A", "A4");
+        gym.reservarActividad("111A", "A5");
+        gym.reservarActividad("222B", "A1");
+        gym.reservarActividad("222B", "A2");
+        gym.reservarActividad("333C", "A1");
+        gym.reservarActividad("333C", "A4");
+        gym.reservarActividad("444D", "A5");
+        gym.reservarActividad("444D", "A6");
+        gym.reservarActividad("555E", "A2");
+        gym.reservarActividad("555E", "A6");
+        gym.reservarActividad("666F", "A1");
+        gym.reservarActividad("666F", "A7");
+
+
+        //6. Cancelar una reserva
+        gym.cancelarReserva("444D", "A2");
+
+
+        //7. Actividades de un socio
+        IO.println("---- Actividades de Juan -----");
+        IO.println(gym.getActividadesSocio("111A"));
+
+
+        //8. Actividades Llenas
+        IO.println("---- Actividades llenas -----");
+        IO.println(gym.getActividadesLlenas());
+
+
+        //9. Ranking de los socios
+        IO.println("---- Rainking de los socios -----");
+        IO.println(gym.getRankingSocios());
+
+
+        //10. Reservas por fecha
+        IO.println("---- Reservas por fecha -----");
+        IO.println(gym.getReservasOrdenadasPorFecha());
+
+
+        //11. Reservas por actividad
+        IO.println("---- Reservas por actividad -----");
+        IO.println(gym.getReservasOrdenadasPorActividad());
+
+
+        //12. Reservas por Socio y Fecha
+        IO.println("---- Reservas por Socio y Fecha");
+        IO.println(gym.getReservasOrdenadasPorSocioYFecha());
+
+
+        //13. Reservas por duración
+        IO.println("---- Reservas por duración -----");
+        IO.println(gym.getReservasOrdenadasPorDuracion());
+
+
+        //14. Reservas pendientes
+        IO.println("---- Reservas Pendientes -----");
+        IO.println(gym.getReservasPendientesOrdenadasPorFecha());
+
+
     }
 }
